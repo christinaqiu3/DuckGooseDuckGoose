@@ -16,8 +16,7 @@ namespace UI
             progDuck = 0.75f;
 
             // TODO: delete this for actual game
-            warningSign.Enable();
-            warning.CalculateHeight(progGoose, progDuck);
+            EnableWarning();
         }
 
         private void Update()

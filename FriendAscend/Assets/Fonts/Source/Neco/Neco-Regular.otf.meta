@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: 0c4382c3de01c9146871fe18a85356e9
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Neco
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: f834ad82f1eda95479e2f9bdbd9659f8, type: 3}
+  - {fileID: 12800000, guid: 20f817734a298844fb22b1129b517b20, type: 3}
+  - {fileID: 12800000, guid: a4021d6fc53112d4e8fbe2960757bb34, type: 3}
+  - {fileID: 12800000, guid: e29988edbf20e4f40b4dfc251949615d, type: 3}
+  - {fileID: 12800000, guid: 99223d3a54e9c8c499716b6193f84624, type: 3}
+  - {fileID: 12800000, guid: d6d40d29fc21bea498dfdbfa175f73a6, type: 3}
+  - {fileID: 12800000, guid: 78860645592592444a006bc032a86e35, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

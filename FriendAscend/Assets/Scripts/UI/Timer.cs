@@ -28,7 +28,16 @@ namespace UI
             text.text = ts.ToString(@"h\:mm\:ss\.fff");
         }
 
-        public void ResetTimer() => _time -= _time;
+        public void ResetTimer()
+        {
+            _time -= _time;
+            
+            var eulerAngles = clockHand.transform.eulerAngles;
+            clockHand.transform.rotation = Quaternion.Euler(eulerAngles.x, eulerAngles.y, _time * -60f);
+            
+            text.text = new TimeSpan(0).ToString(@"h\:mm\:ss\.fff");
+        }
+
         public void Pause() => _paused = true;
         public void Continue() => _paused = false;
     }

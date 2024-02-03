@@ -17,8 +17,8 @@ public class MoveCamera : MonoBehaviour
     void Start()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
-        speed = 2f;
-        cameraResizeSpeed = 1.5f;
+        speed = 0.5f;
+        cameraResizeSpeed = 2.5f;
         currentIndex = 1;
         while (level.transform.GetChild(currentIndex).tag != "FriendAscendPlatform")
             currentIndex++;

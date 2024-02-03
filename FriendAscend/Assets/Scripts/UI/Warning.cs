@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,8 @@ namespace UI
         private float _posY;
         private float _height;
         private float _uvH;
+        
+        private Coroutine _animOpacity;
         
         private void Update()
         {
@@ -25,7 +28,6 @@ namespace UI
             warning.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _height);
         }
 
-        // takes in two floats 0.0-1.0, calculates: PosY, Height, and uvRect's H
         public void CalculateHeight(float bot, float top)
         {
             var diff = top - bot;
@@ -33,6 +35,37 @@ namespace UI
             _posY = bot * 800f;
             _height = diff * 800f;
             _uvH = _height / 50f;
+        }
+
+        private IEnumerator AnimOpacity(float opacity)
+        {
+            var original = warning.color.a;
+            var progress = 0f;
+            const float length = 0.1f;
+            
+            while (progress < length)
+            {
+                progress += Time.deltaTime;
+
+                var c = warning.color;
+                c.a = Mathf.Lerp(original, opacity, progress / length);
+                warning.color = c;
+                
+                yield return null;
+            }
+
+            var color = warning.color;
+            warning.color = new Color(color.r, color.g, color.b, opacity);
+        }
+
+        public void SetOpacity(float opacity)
+        {
+            if (_animOpacity != null)
+            {
+                StopCoroutine(_animOpacity);
+            }
+
+            _animOpacity = StartCoroutine(AnimOpacity(opacity));
         }
     }
 }

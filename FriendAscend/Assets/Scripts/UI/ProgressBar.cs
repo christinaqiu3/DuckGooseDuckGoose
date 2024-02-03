@@ -5,6 +5,8 @@ namespace UI
     public class ProgressBar : MonoBehaviour
     {
         [SerializeField] private Warning warning;
+        [SerializeField] private WarningSign warningSign;
+        
         [SerializeField, Range(0f, 1f)] private float progGoose;
         [SerializeField, Range(0f, 1f)] private float progDuck;
         
@@ -12,7 +14,9 @@ namespace UI
         {
             progGoose = 0.5f;
             progDuck = 0.75f;
-            
+
+            // TODO: delete this for actual game
+            warningSign.Enable();
             warning.CalculateHeight(progGoose, progDuck);
         }
 
@@ -26,6 +30,18 @@ namespace UI
             {
                 warning.CalculateHeight(progDuck, progGoose);
             }
+        }
+
+        public void EnableWarning()
+        {
+            warningSign.Enable();
+            warning.SetOpacity(1f);
+        }
+
+        public void DisableWarning()
+        {
+            warningSign.Disable();
+            warning.SetOpacity(0f);
         }
     }
 }

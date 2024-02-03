@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: aab5d54ed6f32644881c994b154d33d5
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Pilcrow Rounded
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b0e25d8b6896cc142827dbd4eb279609, type: 3}
+  - {fileID: 12800000, guid: 014882629e37c3e40a026d7f1cdc61ab, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -462,7 +462,7 @@ MonoBehaviour:
   warningSign: {fileID: 8196282885902248819}
   gooseTick: {fileID: 2251114438213278954}
   duckTick: {fileID: 7641750559598632499}
-  progGoose: 0.466
+  progGoose: 0
   progDuck: 0
 --- !u!1 &8196282884505254972
 GameObject:

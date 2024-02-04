@@ -12,7 +12,7 @@ public class PlatformScript : MonoBehaviour
     public static int maxNumPlatforms = 10;
     public Mesh[] platformMeshes;
     public GameObject [] details;
-    public GameObject[] trees;
+    public GameObject[] obstacles;
     public GameObject lemonade;
     float lemonadeProb = 0.1f;
     public GameManager gameManager;
@@ -61,10 +61,10 @@ public class PlatformScript : MonoBehaviour
 
         while ((nextPlatform.transform.position - transform.position).magnitude > 10)
         {
-            index = (int)(Random.value * trees.Length);
-            GameObject tree = Instantiate(trees[index]);
-            tree.transform.position = transform.position + Vector3.up*gameObject.GetComponent<BoxCollider>().bounds.size.y / 2 + new Vector3((Random.value-0.5f)*9,0,(Random.value-0.5f)*9);
-            tree.transform.parent = transform.parent;
+            index = (int)(Random.value * obstacles.Length);
+            GameObject obst = Instantiate(obstacles[index]);
+            obst.transform.position = transform.position + Vector3.up*gameObject.GetComponent<BoxCollider>().bounds.size.y / 2 + new Vector3((Random.value-0.5f)*(9-obst.transform.GetComponent<MeshCollider>().bounds.size.x),index<1?0:-2.5f,(Random.value-0.5f)*(9-obst.transform.GetComponent<MeshCollider>().bounds.size.z));
+            obst.transform.parent = transform.parent;
             if (Random.value <= 0.8f)
                 break;
         }

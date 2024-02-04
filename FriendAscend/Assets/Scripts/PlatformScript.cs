@@ -7,7 +7,7 @@ public class PlatformScript : MonoBehaviour
     public GameObject platform;
     public GameObject miniPlatform;
     public int platformNo;
-    int horizontalOffset = 7;
+    int horizontalOffset = 10;
     int verticalOffset = 4;
     public static int maxNumPlatforms = 10;
     public Mesh[] platformMeshes;

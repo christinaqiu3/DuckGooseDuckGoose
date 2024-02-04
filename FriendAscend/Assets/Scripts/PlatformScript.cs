@@ -45,7 +45,7 @@ public class PlatformScript : MonoBehaviour
         {
             GameObject plat = Instantiate(miniPlatform);
             plat.transform.position = nextPlatform.transform.position - nextPlatform.GetComponent<BoxCollider>().bounds.size / 2
-                + Vector3.up * nextPlatform.GetComponent<BoxCollider>().bounds.size.y * 2/3.0f + new Vector3((Random.value - 0.7f) * horizontalOffset/2.0f, (Random.value - 1f) * verticalOffset/3.0f, (Random.value - 0.7f) * horizontalOffset/2.0f);
+                + Vector3.up * nextPlatform.GetComponent<BoxCollider>().bounds.size.y * 2/3.0f + new Vector3((Random.value - 0.7f) * horizontalOffset/2.0f, (Random.value - 1f) * verticalOffset/2.7f, (Random.value - 0.7f) * horizontalOffset/2.0f);
             plat.GetComponent<MeshFilter>().mesh = platformMeshes[(int)(Random.value * platformMeshes.Length)];
             plat.transform.parent = gameObject.transform.parent;
         }

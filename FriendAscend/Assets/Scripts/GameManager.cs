@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject duck;
     [SerializeField] private ProgressBar progressBar;
 
-    private float _maxHeight;
+    public float _maxHeight;
     
     private void Awake()
     {

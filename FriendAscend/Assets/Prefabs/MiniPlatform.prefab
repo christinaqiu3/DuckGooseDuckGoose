@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8895608201675070377
+--- !u!1 &8138332434435891844
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,72 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8895608201675070376}
-  - component: {fileID: 8895608201675070373}
-  - component: {fileID: 8895608201675070372}
-  - component: {fileID: 8895608201675070378}
-  - component: {fileID: 8895608201675070379}
+  - component: {fileID: 152961813885180089}
+  - component: {fileID: 7857111069943712900}
+  - component: {fileID: 6179339107946852540}
+  - component: {fileID: 7415579399060136601}
   m_Layer: 0
-  m_Name: Platform
-  m_TagString: FriendAscendPlatform
+  m_Name: MiniPlatform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8895608201675070376
+--- !u!4 &152961813885180089
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8895608201675070377}
+  m_GameObject: {fileID: 8138332434435891844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8895608201675070373
+--- !u!33 &7857111069943712900
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8895608201675070377}
-  m_Mesh: {fileID: -2432090755550338912, guid: 4731a4dea148c4e929a38cefcbed1b5c, type: 3}
---- !u!114 &8895608201675070372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8895608201675070377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7f5cf256657d408bb5d4e42faac4ba8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  platform: {fileID: 8895608201675070377}
-  miniPlatform: {fileID: 8138332434435891844, guid: 5db4fc0b1ffbf484eb7fcaf3c32a4aaf, type: 3}
-  platformNo: 0
-  platformMeshes:
-  - {fileID: -2432090755550338912, guid: 4731a4dea148c4e929a38cefcbed1b5c, type: 3}
-  - {fileID: -2432090755550338912, guid: 577e3c3acc5c9493cbf8227343228bc8, type: 3}
-  - {fileID: -2432090755550338912, guid: e857f07b5e4a14c0abdbda54e3806bc7, type: 3}
-  - {fileID: -2432090755550338912, guid: ac850c1f6d78e4b7fa6f4bbfa97d09cb, type: 3}
-  - {fileID: -2432090755550338912, guid: 8c3985dcc0d0242f3872d16658180f37, type: 3}
-  - {fileID: -2432090755550338912, guid: 9ea3147ef53c94f92aa3e4b0421f9273, type: 3}
-  - {fileID: -2432090755550338912, guid: db483a2d866cd4c98837fd49b6fa958a, type: 3}
-  lemonade: {fileID: 7161588122462564970, guid: 31e719f9b35364f0288ae9cec50a5547, type: 3}
---- !u!23 &8895608201675070378
+  m_GameObject: {fileID: 8138332434435891844}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &6179339107946852540
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8895608201675070377}
+  m_GameObject: {fileID: 8138332434435891844}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -109,13 +84,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8895608201675070379
+--- !u!65 &7415579399060136601
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8895608201675070377}
+  m_GameObject: {fileID: 8138332434435891844}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1

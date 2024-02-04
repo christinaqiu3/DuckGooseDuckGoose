@@ -218,7 +218,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -110, y: 0}
+  m_AnchoredPosition: {x: -100, y: 0}
   m_SizeDelta: {x: 75.3296, y: 46.7043}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6820299728250722779
@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoint: {fileID: 3592004295094621987}
+  speed: 0
 --- !u!1 &3934513595000442723
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,6 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoint: {fileID: 7195434996127478647}
+  speed: 0
 --- !u!1 &8196282884375340730
 GameObject:
   m_ObjectHideFlags: 0

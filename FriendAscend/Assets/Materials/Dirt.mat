@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Grass
+  m_Name: Dirt
   m_Shader: {fileID: 4800000, guid: 4c97b5d6c8f294e2fbda82c77d49a413, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -58,7 +58,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Blur: 0
+    - _Blur: 0.01
     - _Brightness: 0
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -79,6 +79,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.3888782, g: 0.6784314, b: 0.17647056, a: 1}
+    - _Color: {r: 0.6698113, g: 0.43100902, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

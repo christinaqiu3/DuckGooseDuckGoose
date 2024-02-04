@@ -11,6 +11,7 @@ public class PlatformScript : MonoBehaviour
     int verticalOffset = 4;
     public static int maxNumPlatforms = 10;
     public Mesh[] platformMeshes;
+    public GameObject [] details;
     public GameObject lemonade;
     float lemonadeProb = 0.1f;
     public GameManager gameManager;
@@ -19,6 +20,10 @@ public class PlatformScript : MonoBehaviour
     {
         int index = (int)(Random.value * platformMeshes.Length);
         GetComponent<MeshFilter>().mesh = platformMeshes[index];
+        index = (int)(Random.value * details.Length);
+        GameObject detail = Instantiate(details[index]);
+        detail.transform.position = transform.position;// + Vector3.up*GetComponent<BoxCollider>().bounds.size.y / 2;
+        detail.transform.parent = transform.parent;
 
         platformNo = GameObject.FindGameObjectsWithTag("FriendAscendPlatform").Length;
         if (platformNo == maxNumPlatforms)

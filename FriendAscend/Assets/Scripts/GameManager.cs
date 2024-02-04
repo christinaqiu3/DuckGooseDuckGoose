@@ -8,8 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ProgressBar progressBar;
 
     private float _maxHeight;
-
-
+    
     private void Awake()
     {
         _maxHeight = 50f;

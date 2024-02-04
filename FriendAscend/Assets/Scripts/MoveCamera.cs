@@ -28,7 +28,7 @@ public class MoveCamera : MonoBehaviour
     }
 
     void moveCamera(float f) {
-        gameObject.transform.position += velocity * Time.fixedDeltaTime * (isTutorial ? 0.5f : 1f) * f;
+        gameObject.transform.position += velocity * (Time.fixedDeltaTime * (isTutorial ? 0.5f : 1f) * f);
         if ((target - transform.position).magnitude < 0.5)
         {
             if (currentIndex == level.transform.childCount - 1)

@@ -937,6 +937,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UISceneTransition
       objectReference: {fileID: 0}
+    - target: {fileID: 5447554689593666461, guid: 9b612bc5f590e6a4b8caefb16a781524, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5447554689593666463, guid: 9b612bc5f590e6a4b8caefb16a781524, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1526,6 +1530,10 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 1373371630310114845, guid: d56edfdad4fd5f04bacbf27c1d167732, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1373371630310114847, guid: d56edfdad4fd5f04bacbf27c1d167732, type: 3}
       propertyPath: m_Name
       value: UITimer
@@ -1776,6 +1784,10 @@ PrefabInstance:
     - target: {fileID: 8196282885677525802, guid: 07472df4c60aa474ea931ab02c50ac7c, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196282885677525803, guid: 07472df4c60aa474ea931ab02c50ac7c, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8196282885677525805, guid: 07472df4c60aa474ea931ab02c50ac7c, type: 3}
       propertyPath: m_Name
@@ -2419,7 +2431,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

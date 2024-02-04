@@ -7,7 +7,7 @@ public class PlatformScript : MonoBehaviour
     public GameObject platform;
     public GameObject miniPlatform;
     public int platformNo;
-    int horizontalOffset = 10;
+    int horizontalOffset = 15;
     int verticalOffset = 4;
     public static int maxNumPlatforms = 10;
     public Mesh[] platformMeshes;
@@ -31,7 +31,7 @@ public class PlatformScript : MonoBehaviour
                 Material[] originalMaterials = meshRenderer.materials;
                 Material[] flippedMaterials = new Material[] { originalMaterials[1], originalMaterials[0] };
                 meshRenderer.materials = flippedMaterials;
-                Debug.Log("Materials flipped!");
+                //Debug.Log("Materials flipped!");
             }
 
             return;
@@ -57,13 +57,23 @@ public class PlatformScript : MonoBehaviour
             GameObject plat = Instantiate(miniPlatform);
             plat.transform.position = nextPlatform.transform.position - nextPlatform.GetComponent<BoxCollider>().bounds.size / 2
                 + Vector3.up * nextPlatform.GetComponent<BoxCollider>().bounds.size.y * 2 / 3.0f + new Vector3((Random.value - 0.7f) * horizontalOffset / 2.0f, (Random.value - 1f) * verticalOffset / 2.7f, (Random.value - 0.7f) * horizontalOffset / 2.0f);
-            plat.GetComponent<MeshFilter>().mesh = platformMeshes[(int)(Random.value * platformMeshes.Length)];
+            index = (int)(Random.value * platformMeshes.Length);
+            plat.GetComponent<MeshFilter>().mesh = platformMeshes[index];
             plat.transform.parent = gameObject.transform.parent;
+            if (index >= 2)
+            {
+                MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+                Material[] originalMaterials = meshRenderer.materials;
+                Material[] flippedMaterials = new Material[] { originalMaterials[1], originalMaterials[0] };
+                meshRenderer.materials = flippedMaterials;
+                //Debug.Log("Materials flipped!");
+            }
         }
 
         nextPlatform.transform.parent = gameObject.transform.parent;
         nextPlatform.gameObject.GetComponent<PlatformScript>().gameManager = gameManager;
         nextPlatform.gameObject.SetActive(true);
+
         if (index >= 2)
         {
             MeshRenderer meshRenderer = GetComponent<MeshRenderer>();

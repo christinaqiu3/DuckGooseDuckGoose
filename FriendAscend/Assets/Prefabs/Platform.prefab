@@ -66,6 +66,7 @@ MonoBehaviour:
   - {fileID: -2432090755550338912, guid: 8c3985dcc0d0242f3872d16658180f37, type: 3}
   - {fileID: -2432090755550338912, guid: 9ea3147ef53c94f92aa3e4b0421f9273, type: 3}
   - {fileID: -2432090755550338912, guid: db483a2d866cd4c98837fd49b6fa958a, type: 3}
+  lemonade: {fileID: 7161588122462564970, guid: 31e719f9b35364f0288ae9cec50a5547, type: 3}
 --- !u!23 &8895608201675070378
 MeshRenderer:
   m_ObjectHideFlags: 0

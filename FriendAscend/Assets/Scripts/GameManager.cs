@@ -21,8 +21,24 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         progressBar.SetProgress(goose.transform.position.y / _maxHeight, duck.transform.position.y / _maxHeight);
-
-        gooseRing.Fill = (float) Math.Sin(Math.PI * Time.time);
-        duckRing.Fill = (float) Math.Cos(Math.PI * Time.time);
     }
+
+    public void fillGooseRing(float f)
+    {
+        if (f == 0)
+            gooseRing.gameObject.SetActive(false);
+        else
+            gooseRing.gameObject.SetActive(true);
+        gooseRing.Fill = f;
+    }
+
+    public void fillDuckRing(float f)
+    {
+        if (f == 0)
+            duckRing.gameObject.SetActive(false);
+        else
+            duckRing.gameObject.SetActive(true);
+        duckRing.Fill = f;
+    }
+
 }

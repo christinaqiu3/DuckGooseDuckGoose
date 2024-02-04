@@ -11,18 +11,18 @@ public class PlayerMovement : MonoBehaviour
     double jumpTime;
     int maxSpeed;
     int maxWaterSpeed;
+    public GameManager gameManager;
+    float currLemonadeTime;
+    float totalLemonadeTime;
     
     // Start is called before the first frame update
     void Start()
     {
+        totalLemonadeTime = 5;
         forceOver2 = 5;
         maxSpeed = 10;
         maxWaterSpeed = maxSpeed / 4;
         maxNumJumps = 1;
-    }
-
-    public void GetDoubleJump() {
-        maxNumJumps = 2;
     }
 
     private void FixedUpdate()
@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnCollisionStay(Collision collision)
     {
-        if (Time.timeAsDouble != jumpTime && collision.transform.position.y + collision.gameObject.GetComponent<BoxCollider>().bounds.size.y /2f <= transform.position.y - transform.localScale.y / 3f)
+        if (collision.gameObject.tag != "Player" && Time.timeAsDouble != jumpTime && collision.transform.position.y + collision.gameObject.GetComponent<BoxCollider>().bounds.size.y /2f <= transform.position.y - transform.localScale.y / 3f)
         {
             numJumps = 0;
             //Debug.Log("Not jumping");
@@ -76,7 +76,29 @@ public class PlayerMovement : MonoBehaviour
         }
         if(collision.gameObject.tag == "FriendAscendLemonade")
         {
-            maxNumJumps = 2;
+            currLemonadeTime += Time.deltaTime;
+            if (currLemonadeTime > totalLemonadeTime)
+            {
+                currLemonadeTime = totalLemonadeTime;
+                maxNumJumps = 2;
+                //Debug.Log("Double jump");
+            }
+            if (Player1)
+                gameManager.GetComponent<GameManager>().fillGooseRing(currLemonadeTime / totalLemonadeTime);
+            else
+                gameManager.GetComponent<GameManager>().fillDuckRing(currLemonadeTime / totalLemonadeTime);
+        }
+    }
+
+    public void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "FriendAscendLemonade")
+        {
+            currLemonadeTime = 0;
+            if (Player1)
+                gameManager.GetComponent<GameManager>().fillGooseRing(currLemonadeTime / totalLemonadeTime);
+            else
+                gameManager.GetComponent<GameManager>().fillDuckRing(currLemonadeTime / totalLemonadeTime);
         }
     }
 

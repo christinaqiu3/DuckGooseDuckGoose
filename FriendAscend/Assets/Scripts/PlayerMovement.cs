@@ -12,9 +12,11 @@ public class PlayerMovement : MonoBehaviour
     public GameManager gameManager;
     float currLemonadeTime;
     float totalLemonadeTime;
+
+    [SerializeField] private Animator anim;
     
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         totalLemonadeTime = 5;
         forceOver2 = 5;
@@ -30,34 +32,77 @@ public class PlayerMovement : MonoBehaviour
         if (IsGoose)
         {
             if (Input.GetKey(KeyCode.A))
+            {
                 rb.AddForce((Vector3.left+Vector3.forward)*forceOver2);
+                anim.SetTrigger("Walked");
+            }
+                
             if (Input.GetKey(KeyCode.D))
+            {
                 rb.AddForce((Vector3.right-Vector3.forward)*forceOver2);
+                anim.SetTrigger("Walked");
+            }
+            
             if (Input.GetKey(KeyCode.W))
+            {
                 rb.AddForce((Vector3.forward+Vector3.right)*forceOver2);
+                anim.SetTrigger("Walked");
+            }
+
             if (Input.GetKey(KeyCode.S))
-                rb.AddForce((-Vector3.forward-Vector3.right)*forceOver2);
+            {
+                rb.AddForce((-Vector3.forward - Vector3.right) * forceOver2);
+                anim.SetTrigger("Walked");
+            }
         }
         else
         {
             if (Input.GetKey(KeyCode.LeftArrow))
+            {
                 rb.AddForce((Vector3.left + Vector3.forward)*forceOver2);
+                anim.SetTrigger("Walked");
+            }
+
             if (Input.GetKey(KeyCode.RightArrow))
+            {
                 rb.AddForce((Vector3.right - Vector3.forward)*forceOver2);
+                anim.SetTrigger("Walked");
+            }
+
             if (Input.GetKey(KeyCode.UpArrow))
+            {
                 rb.AddForce((Vector3.forward + Vector3.right)*forceOver2);
+                anim.SetTrigger("Walked");
+            }
+
             if (Input.GetKey(KeyCode.DownArrow))
+            {
                 rb.AddForce((-Vector3.forward - Vector3.right)*forceOver2);
+                anim.SetTrigger("Walked");
+            }
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (numJumps < maxNumJumps)
+            {
+                rb.AddForce(Vector3.up * 375);
+                numJumps++;
+                jumpTime = Time.timeAsDouble;
+            }
+            
+            anim.SetTrigger("Jumped");
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && numJumps<maxNumJumps)
+        if (Input.GetKey(KeyCode.Space))
         {
-            rb.AddForce(Vector3.up * 375);
-            numJumps++;
-            jumpTime = Time.timeAsDouble;
+            anim.SetTrigger("Jumped");
         }
+
         if (rb.velocity.magnitude > maxSpeed)
+        {
             rb.velocity = rb.velocity.normalized * maxSpeed;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -82,6 +127,8 @@ public class PlayerMovement : MonoBehaviour
             || collision.gameObject.GetComponent<MeshCollider>() && collision.transform.position.y + collision.gameObject.GetComponent<MeshCollider>().bounds.size.y / 3f <= transform.position.y - transform.localScale.y / 3f))
         {
             numJumps = 0;
+            
+            anim.SetTrigger("Landed");
         }
         
         if (collision.gameObject.tag == "FriendAscendWater")

@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     double jumpTime;
     int maxSpeed;
     int maxWaterSpeed;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnCollisionStay(Collision collision)
     {
-        if (Time.timeAsDouble != jumpTime && collision.transform.position.y + collision.transform.localScale.y / 2.0f <= transform.position.y - transform.localScale.y / 3f)
+        if (Time.timeAsDouble != jumpTime && collision.transform.position.y + collision.gameObject.GetComponent<BoxCollider>().bounds.size.y /2f <= transform.position.y - transform.localScale.y / 3f)
         {
             numJumps = 0;
             Debug.Log("Not jumping");

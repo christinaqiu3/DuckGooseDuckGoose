@@ -10,16 +10,19 @@ public class PlatformScript : MonoBehaviour
     int horizontalOffset = 7;
     int verticalOffset = 4;
     public static int maxNumPlatforms = 10;
+    public Mesh[] platformMeshes;
     // Start is called before the first frame update
     void Start()
     {
+        GetComponent<MeshFilter>().mesh = platformMeshes[(int)Random.value * platformMeshes.Length];
+
         if (platformNo == maxNumPlatforms)
             return;
         platformNo = GameObject.FindGameObjectsWithTag("FriendAscendPlatform").Length;
         GameObject nextPlatform = Instantiate(platform);
 
         nextPlatform.transform.position = gameObject.transform.position + gameObject.transform.localScale / 2
-            +(platformNo==1? Vector3.zero: new Vector3((Random.value-0.3f)*horizontalOffset,(Random.value-0.5f)*verticalOffset, (Random.value - 0.3f)*horizontalOffset));
+            +(platformNo==1? Vector3.zero: new Vector3((Random.value-0.3f)*horizontalOffset,(Random.value-1f)*verticalOffset, (Random.value - 0.3f)*horizontalOffset));
 
         if(nextPlatform.transform.position[1]-transform.position[1]>3)
         {

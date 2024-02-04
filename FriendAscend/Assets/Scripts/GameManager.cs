@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ProgressRing gooseRing;
     [SerializeField] private ProgressRing duckRing;
 
+    [SerializeField] private DoubleJumpText gooseDouble;
+    [SerializeField] private DoubleJumpText duckDouble;
+
     public float _maxHeight;
     private bool _isRestarting;
 
@@ -39,29 +42,31 @@ public class GameManager : MonoBehaviour
             _isRestarting = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             sceneLoader.LoadScene("MainMenu");
             _isRestarting = true;
         }
     }
 
-    public void fillGooseRing(float f)
+    public void GooseRingAppear(float fill) => gooseRing.Appear(fill);
+    public void GooseRingDisappear() => gooseRing.Disappear();
+    
+    public void DuckRingAppear(float fill) => duckRing.Appear(fill);
+    public void DuckRingDisappear() => duckRing.Disappear();
+
+    public void FillGooseRing(float f) => gooseRing.Fill = f;
+    public void FillDuckRing(float f) => duckRing.Fill = f;
+
+    public void GooseGetDoubleJump()
     {
-        if (f == 0)
-            gooseRing.gameObject.SetActive(false);
-        else
-            gooseRing.gameObject.SetActive(true);
-        gooseRing.Fill = f;
+        gooseRing.GetDoubleJump();
+        gooseDouble.Appear();
     }
 
-    public void fillDuckRing(float f)
+    public void DuckGetDoubleJump()
     {
-        if (f == 0)
-            duckRing.gameObject.SetActive(false);
-        else
-            duckRing.gameObject.SetActive(true);
-        duckRing.Fill = f;
-    }
-
+        duckRing.GetDoubleJump();
+        duckDouble.Appear();
+    } 
 }

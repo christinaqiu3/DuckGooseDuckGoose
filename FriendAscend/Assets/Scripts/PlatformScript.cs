@@ -12,7 +12,7 @@ public class PlatformScript : MonoBehaviour
     public static int maxNumPlatforms = 10;
     public Mesh[] platformMeshes;
     public GameObject lemonade;
-    float lemonadeProb = 0.1f;
+    float lemonadeProb = 1f;
     public GameManager gameManager;
     // Start is called before the first frame update
     void Start()

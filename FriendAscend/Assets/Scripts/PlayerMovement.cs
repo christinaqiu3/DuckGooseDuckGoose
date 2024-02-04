@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public bool Player1;
+    public bool IsGoose;
     int numJumps;
     int maxNumJumps;
     int forceOver2;
@@ -29,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Rigidbody rb = GetComponent<Rigidbody>();
         
-        if (Player1)
+        if (IsGoose)
         {
             if (Input.GetKey(KeyCode.A))
                 rb.AddForce((Vector3.left+Vector3.forward)*forceOver2);
@@ -57,10 +55,23 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector3.up * 375);
             numJumps++;
             jumpTime = Time.timeAsDouble;
-            //Debug.Log("Jumping");
         }
         if (rb.velocity.magnitude > maxSpeed)
             rb.velocity = rb.velocity.normalized * maxSpeed;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "FriendAscendLemonade")
+        {
+            currLemonadeTime += Time.deltaTime;
+            var progress = currLemonadeTime / totalLemonadeTime;
+            
+            if (IsGoose)
+                gameManager.GooseRingAppear(progress);
+            else
+                gameManager.DuckRingAppear(progress);
+        }
     }
 
     public void OnCollisionStay(Collision collision)
@@ -68,25 +79,45 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag != "Player" && Time.timeAsDouble != jumpTime && collision.transform.position.y + collision.gameObject.GetComponent<BoxCollider>().bounds.size.y /2f <= transform.position.y - transform.localScale.y / 3f)
         {
             numJumps = 0;
-            //Debug.Log("Not jumping");
         }
+        
         if (collision.gameObject.tag == "FriendAscendWater")
         {
             GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * maxWaterSpeed;
         }
-        if(collision.gameObject.tag == "FriendAscendLemonade")
+        
+        if (collision.gameObject.tag == "FriendAscendLemonade")
         {
             currLemonadeTime += Time.deltaTime;
+
+            if (maxNumJumps == 2)
+            {
+                return;
+            }
+            
             if (currLemonadeTime > totalLemonadeTime)
             {
                 currLemonadeTime = totalLemonadeTime;
                 maxNumJumps = 2;
-                //Debug.Log("Double jump");
+
+                if (IsGoose)
+                {
+                    gameManager.GooseGetDoubleJump();
+                }
+                else
+                {
+                    gameManager.DuckGetDoubleJump();
+                }
+
+                return;
             }
-            if (Player1)
-                gameManager.GetComponent<GameManager>().fillGooseRing(currLemonadeTime / totalLemonadeTime);
+
+            var progress = currLemonadeTime / totalLemonadeTime;
+            
+            if (IsGoose)
+                gameManager.FillGooseRing(progress);
             else
-                gameManager.GetComponent<GameManager>().fillDuckRing(currLemonadeTime / totalLemonadeTime);
+                gameManager.FillDuckRing(progress);
         }
     }
 
@@ -95,16 +126,11 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "FriendAscendLemonade")
         {
             currLemonadeTime = 0;
-            if (Player1)
-                gameManager.GetComponent<GameManager>().fillGooseRing(currLemonadeTime / totalLemonadeTime);
+            
+            if (IsGoose)
+                gameManager.GooseRingDisappear();
             else
-                gameManager.GetComponent<GameManager>().fillDuckRing(currLemonadeTime / totalLemonadeTime);
+                gameManager.DuckRingDisappear();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

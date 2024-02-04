@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UI;
 
@@ -33,8 +34,17 @@ public class GameManager : MonoBehaviour
             sceneLoader.LoadScene("Level 1");
             _isRestarting = true;
         }
-        
-        progressBar.SetProgress((gooseHeight) / _maxHeight, (duckHeight) / _maxHeight);
+
+        var progGoose = (gooseHeight) / _maxHeight;
+        var progDuck = (duckHeight) / _maxHeight;
+
+        if (Math.Abs(progGoose - progDuck) >= 0.25)
+        {
+            sceneLoader.LoadScene("Level 1");
+            _isRestarting = true;
+        }
+
+        progressBar.SetProgress(progGoose, progDuck);
 
         if (Input.GetKeyDown(KeyCode.R))
         {

@@ -215,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129424302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.39, y: 1.085, z: -1.87}
+  m_LocalPosition: {x: -2.5, y: 1.085, z: -3.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -742,7 +742,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1721553592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.96, y: 0.945, z: 0.56}
+  m_LocalPosition: {x: -3.62, y: 0.945, z: -2.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -928,10 +928,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 2118402545}
     m_Modifications:
     - target: {fileID: 8895608201675070372, guid: 9dd5c04abbc844f8c85daf3289db5fe0, type: 3}
-      propertyPath: miniPlatform
-      value: 
-      objectReference: {fileID: 8138332434435891844, guid: 5db4fc0b1ffbf484eb7fcaf3c32a4aaf, type: 3}
-    - target: {fileID: 8895608201675070372, guid: 9dd5c04abbc844f8c85daf3289db5fe0, type: 3}
       propertyPath: isFirstPlatform
       value: 1
       objectReference: {fileID: 0}
@@ -985,6 +981,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8895608201675070377, guid: 9dd5c04abbc844f8c85daf3289db5fe0, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8895608201675070378, guid: 9dd5c04abbc844f8c85daf3289db5fe0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8895608201675070379, guid: 9dd5c04abbc844f8c85daf3289db5fe0, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

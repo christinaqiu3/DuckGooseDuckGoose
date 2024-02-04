@@ -127,7 +127,6 @@ public class PlayerMovement : MonoBehaviour
             || collision.gameObject.GetComponent<MeshCollider>() && collision.transform.position.y + collision.gameObject.GetComponent<MeshCollider>().bounds.size.y / 3f <= transform.position.y - transform.localScale.y / 3f))
         {
             numJumps = 0;
-            
             anim.SetTrigger("Landed");
         }
         

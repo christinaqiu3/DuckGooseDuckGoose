@@ -15,14 +15,14 @@ public class PlatformScript : MonoBehaviour
     public GameObject lemonade;
     float lemonadeProb = 0.1f;
     public GameManager gameManager;
-    // Start is called before the first frame update
+
     void Start()
     {
         int index = (int)(Random.value * platformMeshes.Length);
         GetComponent<MeshFilter>().mesh = platformMeshes[index];
         index = (int)(Random.value * details.Length);
         GameObject detail = Instantiate(details[index]);
-        detail.transform.position = transform.position;// + Vector3.up*GetComponent<BoxCollider>().bounds.size.y / 2;
+        detail.transform.position = transform.position;
         detail.transform.parent = transform.parent;
 
         platformNo = GameObject.FindGameObjectsWithTag("FriendAscendPlatform").Length;
@@ -36,7 +36,6 @@ public class PlatformScript : MonoBehaviour
                 Material[] originalMaterials = meshRenderer.materials;
                 Material[] flippedMaterials = new Material[] { originalMaterials[1], originalMaterials[0] };
                 meshRenderer.materials = flippedMaterials;
-                //Debug.Log("Materials flipped!");
             }
 
             return;
@@ -47,7 +46,7 @@ public class PlatformScript : MonoBehaviour
         {
             nextPlatform.transform.position = gameObject.transform.position + gameObject.GetComponent<BoxCollider>().bounds.size / 2;
             GameObject lemonadeStand = Instantiate(lemonade);
-            lemonadeStand.transform.position = transform.position + new Vector3(3, 3.5f, -3);//Vector3.up*gameObject.GetComponent<BoxCollider>().bounds.size.y / 2 + Vector3.up*lemonade.GetComponent<BoxCollider>().bounds.size.y / 2;
+            lemonadeStand.transform.position = transform.position + new Vector3(3, 3.5f, -3);
             lemonadeStand.transform.rotation = Quaternion.Euler(0, 270, 0);
             lemonadeStand.transform.parent = transform.parent;
         }
@@ -71,7 +70,6 @@ public class PlatformScript : MonoBehaviour
                 Material[] originalMaterials = meshRenderer.materials;
                 Material[] flippedMaterials = new Material[] { originalMaterials[1], originalMaterials[0] };
                 meshRenderer.materials = flippedMaterials;
-                //Debug.Log("Materials flipped!");
             }
         }
 
@@ -85,7 +83,6 @@ public class PlatformScript : MonoBehaviour
             Material[] originalMaterials = meshRenderer.materials;
             Material[] flippedMaterials = new Material[] { originalMaterials[1], originalMaterials[0] };
             meshRenderer.materials = flippedMaterials;
-            Debug.Log("Materials flipped!");
         }
     }
 

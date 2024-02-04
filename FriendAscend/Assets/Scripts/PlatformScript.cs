@@ -14,7 +14,7 @@ public class PlatformScript : MonoBehaviour
     public GameObject [] details;
     public GameObject[] obstacles;
     public GameObject lemonade;
-    float lemonadeProb = 0.1f;
+    float lemonadeProb = 0.2f;
     public GameManager gameManager;
 
     void Start()

@@ -58,7 +58,7 @@ public class MoveCamera : MonoBehaviour
         Vector2 pos2 = GetComponent<Camera>().WorldToViewportPoint(players[1].transform.position);
 
         if ((0.1 >= pos1[0] || 0.1 >= pos1[1]) || (0.1 >= pos2[0] || 0.1 >= pos2[1]) || (0.9 <= pos1[0] || 0.9 <= pos1[1]) || (0.9 <= pos2[0] || 0.9 <= pos2[1]))
-            if ((pos1[1] <= 0.1 && pos2[1] <= 0.1) && ((0.1 <= pos1[0] && pos1[0] <= 0.9) && (0.1 <= pos2[0] && pos2[0] <= 0.9)))
+            if ((pos1[1] >= 0.9 && pos2[1] >= 0.9) && ((0.1 <= pos1[0] && pos1[0] <= 0.9) && (0.1 <= pos2[0] && pos2[0] <= 0.9)))
                 FixedUpdate();
             else
                 GetComponent<Camera>().orthographicSize += cameraResizeSpeed * Time.deltaTime;

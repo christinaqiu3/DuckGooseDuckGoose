@@ -5,15 +5,23 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public bool Player1;
-    bool isJumping;
+    int numJumps;
+    int maxNumJumps;
     int forceOver2;
     double jumpTime;
     int maxSpeed;
+    int maxWaterSpeed;
     // Start is called before the first frame update
     void Start()
     {
         forceOver2 = 5;
         maxSpeed = 10;
+        maxWaterSpeed = maxSpeed / 4;
+        maxNumJumps = 1;
+    }
+
+    public void GetDoubleJump() {
+        maxNumJumps = 2;
     }
 
     private void FixedUpdate()
@@ -43,11 +51,12 @@ public class PlayerMovement : MonoBehaviour
                 rb.AddForce((-Vector3.forward - Vector3.right)*forceOver2);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
+        if (Input.GetKeyDown(KeyCode.Space) && numJumps<maxNumJumps)
         {
             rb.AddForce(Vector3.up * 375);
-            isJumping = true;
-            jumpTime = Time.fixedTimeAsDouble;
+            numJumps++;
+            jumpTime = Time.timeAsDouble;
+            Debug.Log("Jumping");
         }
         if (rb.velocity.magnitude > maxSpeed)
             rb.velocity = rb.velocity.normalized * maxSpeed;
@@ -55,8 +64,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnCollisionStay(Collision collision)
     {
-        if (Time.fixedTimeAsDouble!=jumpTime && collision.transform.position.y + collision.transform.localScale.y / 2.0f <= transform.position.y-transform.localScale.y/3f)
-            isJumping = false;
+        if (Time.timeAsDouble != jumpTime && collision.transform.position.y + collision.transform.localScale.y / 2.0f <= transform.position.y - transform.localScale.y / 3f)
+        {
+            numJumps = 0;
+            Debug.Log("Not jumping");
+        }
+        if (collision.gameObject.tag == "FriendAscendWater")
+        {
+            GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * maxWaterSpeed;
+        }
     }
 
     // Update is called once per frame

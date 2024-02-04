@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlatformScript : MonoBehaviour
 {
-    public bool isFirstPlatform;
     public GameObject platform;
     public GameObject miniPlatform;
     public int platformNo;
@@ -20,7 +19,7 @@ public class PlatformScript : MonoBehaviour
         GameObject nextPlatform = Instantiate(platform);
 
         nextPlatform.transform.position = gameObject.transform.position + gameObject.transform.localScale / 2
-            + new Vector3((Random.value-0.3f)*horizontalOffset,(Random.value-0.5f)*verticalOffset, (Random.value - 0.3f)*horizontalOffset);
+            +(platformNo==1? Vector3.zero: new Vector3((Random.value-0.3f)*horizontalOffset,(Random.value-0.5f)*verticalOffset, (Random.value - 0.3f)*horizontalOffset));
 
         if(nextPlatform.transform.position[1]-transform.position[1]>3)
         {

@@ -50,7 +50,7 @@ public class MoveCamera : MonoBehaviour
 
     public void Update()
     {
-        //resizeCamera();
+        resizeCamera();
     }
 
     public void resizeCamera() {

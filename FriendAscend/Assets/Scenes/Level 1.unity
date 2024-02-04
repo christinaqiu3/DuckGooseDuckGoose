@@ -777,6 +777,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5447554689593666463, guid: 9b612bc5f590e6a4b8caefb16a781524, type: 3}
   m_PrefabInstance: {fileID: 754111653}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &754111655 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5447554689593666462, guid: 9b612bc5f590e6a4b8caefb16a781524, type: 3}
+  m_PrefabInstance: {fileID: 754111653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac66f9abd8a909340af0448b3074e025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &901131716
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,6 +832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483ba3267317cec449e5ae06afb53095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneLoader: {fileID: 754111655}
   goose: {fileID: 1721553592}
   duck: {fileID: 129424302}
   progressBar: {fileID: 1884860881}

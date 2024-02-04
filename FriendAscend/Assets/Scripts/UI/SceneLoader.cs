@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UnityEngine.UIElements.Experimental;
 
@@ -12,12 +11,14 @@ namespace UI
         [SerializeField] private Image arrow;
         [SerializeField] private Image heart;
         [SerializeField] private bool animateExit = true;
-
+        
+        public bool IsExiting { get; private set; }
+        
         private Coroutine _animEnter;
         private Coroutine _animExit;
         private bool _exitAnimPlayed;
 
-        private const float Length = 0.65f;
+        private const float Length = 0.5f;
 
         private void Update()
         {
@@ -92,6 +93,8 @@ namespace UI
             arrow.rectTransform.anchoredPosition3D = final;
             heart.rectTransform.anchoredPosition3D = final;
             heart.rectTransform.rotation = Quaternion.Euler(0, 0, 90);
+
+            IsExiting = false;
         }
 
         public void StartEnterAnim()
@@ -120,6 +123,7 @@ namespace UI
             }
 
             _animExit = StartCoroutine(AnimExit());
+            IsExiting = true;
         }
 
         public void LoadScene(string sceneName)

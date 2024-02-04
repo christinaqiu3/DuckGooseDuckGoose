@@ -1,9 +1,10 @@
-using System;
 using UnityEngine;
 using UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private SceneLoader sceneLoader;
+    
     [SerializeField] private GameObject goose;
     [SerializeField] private GameObject duck;
     [SerializeField] private ProgressBar progressBar;
@@ -12,15 +13,37 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ProgressRing duckRing;
 
     public float _maxHeight;
-    
-    private void Awake()
-    {
-        _maxHeight = 50f;
-    }
+    private bool _isRestarting;
 
     private void Update()
     {
-        progressBar.SetProgress(goose.transform.position.y / _maxHeight, duck.transform.position.y / _maxHeight);
+        if (_isRestarting || sceneLoader.IsExiting)
+        {
+            return;
+        }
+
+        var gooseHeight = goose.transform.position.y - 1f;
+        var duckHeight = duck.transform.position.y - 1f;
+
+        if (gooseHeight < -5f || duckHeight < -5f)
+        {
+            sceneLoader.LoadScene("Level 1");
+            _isRestarting = true;
+        }
+        
+        progressBar.SetProgress((gooseHeight) / _maxHeight, (duckHeight) / _maxHeight);
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            sceneLoader.LoadScene("Level 1");
+            _isRestarting = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            sceneLoader.LoadScene("MainMenu");
+            _isRestarting = true;
+        }
     }
 
     public void fillGooseRing(float f)

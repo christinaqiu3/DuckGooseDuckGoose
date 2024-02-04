@@ -22,7 +22,7 @@ public class PlatformScript : MonoBehaviour
         platformNo = GameObject.FindGameObjectsWithTag("FriendAscendPlatform").Length;
         if (platformNo == maxNumPlatforms)
         {
-            gameManager.GetComponent<GameManager>()._maxHeight = transform.position.y + GetComponent<BoxCollider>().bounds.size.y/2;
+            gameManager.GetComponent<GameManager>()._maxHeight = transform.position.y + GetComponent<BoxCollider>().bounds.size.y / 2f;
             return;
         }
         GameObject nextPlatform = Instantiate(platform);

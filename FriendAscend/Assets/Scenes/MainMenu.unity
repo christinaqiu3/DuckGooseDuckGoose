@@ -560,10 +560,6 @@ PrefabInstance:
       value: UISceneTransition
       objectReference: {fileID: 0}
     - target: {fileID: 5447554689593666462, guid: 9b612bc5f590e6a4b8caefb16a781524, type: 3}
-      propertyPath: animateExit
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5447554689593666462, guid: 9b612bc5f590e6a4b8caefb16a781524, type: 3}
       propertyPath: animateEnter
       value: 0
       objectReference: {fileID: 0}

@@ -27,12 +27,11 @@ public class MoveCamera : MonoBehaviour
         velocity = (target-transform.position).normalized*speed;
     }
 
-    private void FixedUpdate()
-    {
-        gameObject.transform.position += velocity * Time.fixedDeltaTime * (isTutorial? 0.5f : 1f);
+    void moveCamera(float f) {
+        gameObject.transform.position += velocity * Time.fixedDeltaTime * (isTutorial ? 0.5f : 1f) * f;
         if ((target - transform.position).magnitude < 0.5)
         {
-            if (currentIndex == level.transform.childCount-1)
+            if (currentIndex == level.transform.childCount - 1)
             {
                 velocity = Vector3.zero;
                 target = Vector3.zero;
@@ -48,6 +47,11 @@ public class MoveCamera : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        moveCamera(1);
+    }
+
     public void Update()
     {
         moveAndResize();
@@ -59,7 +63,7 @@ public class MoveCamera : MonoBehaviour
 
         if ((0.1 >= pos1[0] || 0.1 >= pos1[1]) || (0.1 >= pos2[0] || 0.1 >= pos2[1]) || (0.9 <= pos1[0] || 0.9 <= pos1[1]) || (0.9 <= pos2[0] || 0.9 <= pos2[1]))
             if ((pos1[1] >= 0.9 && pos2[1] >= 0.9) && ((0.1 <= pos1[0] && pos1[0] <= 0.9) && (0.1 <= pos2[0] && pos2[0] <= 0.9)))
-                FixedUpdate();
+                moveCamera(pos1[1]>1 || pos2[1]>1? 10: 5);
             else
                 GetComponent<Camera>().orthographicSize += cameraResizeSpeed * Time.deltaTime;
         else if ((0.4 <= pos1[0] && pos1[0] <= 0.6) && (0.4 <= pos1[1] && pos1[1] <= 0.6) && (0.4 <= pos2[0] && pos2[0] <= 0.6) && (0.4 <= pos2[1] && pos2[1] <= 0.6) && GetComponent<Camera>().orthographicSize > 4)

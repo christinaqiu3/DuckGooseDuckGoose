@@ -9,7 +9,7 @@ namespace UI
         [SerializeField] private WarningSign warningSign;
         [SerializeField] private Tick gooseTick;
         [SerializeField] private Tick duckTick;
-        
+
         [SerializeField, Range(0f, 1f)] private float progGoose;
         [SerializeField, Range(0f, 1f)] private float progDuck;
 
@@ -62,6 +62,12 @@ namespace UI
         {
             warningSign.Disable();
             warning.SetOpacity(0f);
+        }
+
+        public void SetProgress(float goose, float duck)
+        {
+            progGoose = goose;
+            progDuck = duck;
         }
     }
 }

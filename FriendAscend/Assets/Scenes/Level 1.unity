@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 129424303}
   - component: {fileID: 129424307}
   m_Layer: 0
-  m_Name: Player 2
+  m_Name: Duck
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,7 +220,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &129424307
 Rigidbody:
@@ -282,7 +282,7 @@ Transform:
   - {fileID: 1705948848}
   - {fileID: 1421941355}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &625729683
 GameObject:
@@ -376,13 +376,60 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!4 &654384869 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8895608201675070376, guid: 9dd5c04abbc844f8c85daf3289db5fe0, type: 3}
   m_PrefabInstance: {fileID: 8895608202295887181}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &901131716
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 901131717}
+  - component: {fileID: 901131718}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &901131717
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901131716}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &901131718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901131716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 483ba3267317cec449e5ae06afb53095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goose: {fileID: 1721553592}
+  duck: {fileID: 129424302}
+  progressBar: {fileID: 1884860881}
 --- !u!1001 &1421941354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -618,7 +665,7 @@ GameObject:
   - component: {fileID: 1721553598}
   - component: {fileID: 1721553597}
   m_Layer: 0
-  m_Name: Player 1
+  m_Name: Goose
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -700,7 +747,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1721553597
 Rigidbody:
@@ -731,6 +778,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player1: 1
+--- !u!114 &1884860881 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8196282884375340614, guid: 07472df4c60aa474ea931ab02c50ac7c, type: 3}
+  m_PrefabInstance: {fileID: 1705948847}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 454ce55a7e9b70145a7aad2fa4d5396a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1896056644
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,7 +872,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 0}
 --- !u!114 &1896056648
 MonoBehaviour:
@@ -860,7 +918,7 @@ Transform:
   m_Children:
   - {fileID: 654384869}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8895608202295887181
 PrefabInstance:

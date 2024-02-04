@@ -66,8 +66,8 @@ namespace UI
 
         public void SetProgress(float goose, float duck)
         {
-            progGoose = goose;
-            progDuck = duck;
+            progGoose = Mathf.Clamp(goose, 0f, 1f);
+            progDuck = Mathf.Clamp(duck, 0f, 1f);
         }
     }
 }

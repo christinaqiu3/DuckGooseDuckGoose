@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ProgressRing gooseRing;
     [SerializeField] private ProgressRing duckRing;
 
-    private float _maxHeight;
+    public float _maxHeight;
     
     private void Awake()
     {

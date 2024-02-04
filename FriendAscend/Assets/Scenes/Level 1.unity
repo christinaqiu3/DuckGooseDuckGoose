@@ -852,7 +852,8 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1166025641, guid: dd90ec90c49c76346af7700c7b4955e5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dd90ec90c49c76346af7700c7b4955e5, type: 3}
 --- !u!1 &726961587
 GameObject:

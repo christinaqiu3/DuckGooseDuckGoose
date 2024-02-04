@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace UI
@@ -11,18 +12,36 @@ namespace UI
         
         [SerializeField, Range(0f, 1f)] private float progGoose;
         [SerializeField, Range(0f, 1f)] private float progDuck;
-        
-        private void Start()
-        {
-            progGoose = 0.5f;
-            progDuck = 0.75f;
 
-            // TODO: delete this for actual game
-            EnableWarning();
-        }
+        private bool _warningEnabled;
 
         private void Update()
         {
+            if (Math.Abs(progGoose - progDuck) >= 0.15f)
+            {
+                if (!_warningEnabled)
+                {
+                    _warningEnabled = true;
+                    EnableWarning();
+                }
+            }
+            else
+            {
+                if (_warningEnabled)
+                {
+                    _warningEnabled = false;
+                    DisableWarning();
+                }
+            }
+            
+            gooseTick.CalculatePos(progGoose);
+            duckTick.CalculatePos(progDuck);
+
+            if (!_warningEnabled)
+            {
+                return;
+            }
+            
             if (progGoose <= progDuck)
             {
                 warning.CalculateHeight(progGoose, progDuck);
@@ -31,9 +50,6 @@ namespace UI
             {
                 warning.CalculateHeight(progDuck, progGoose);
             }
-            
-            gooseTick.CalculatePos(progGoose);
-            duckTick.CalculatePos(progDuck);
         }
 
         public void EnableWarning()

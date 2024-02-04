@@ -12,6 +12,7 @@ public class PlatformScript : MonoBehaviour
     public static int maxNumPlatforms = 10;
     public Mesh[] platformMeshes;
     public GameObject [] details;
+    public GameObject[] trees;
     public GameObject lemonade;
     float lemonadeProb = 0.1f;
     public GameManager gameManager;
@@ -28,16 +29,8 @@ public class PlatformScript : MonoBehaviour
         platformNo = GameObject.FindGameObjectsWithTag("FriendAscendPlatform").Length;
         if (platformNo == maxNumPlatforms)
         {
-            gameManager.GetComponent<GameManager>()._maxHeight = transform.position.y + GetComponent<BoxCollider>().bounds.size.y / 2;
-
-            if (index >= 2)
-            {
-                MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
-                Material[] originalMaterials = meshRenderer.materials;
-                Material[] flippedMaterials = new Material[] { originalMaterials[1], originalMaterials[0] };
-                meshRenderer.materials = flippedMaterials;
-            }
-
+            gameManager.GetComponent<GameManager>()._maxHeight = transform.position.y + gameObject.GetComponent<BoxCollider>().bounds.size.y / 2;
+            System.GC.Collect();
             return;
         }
         GameObject nextPlatform = Instantiate(platform);
@@ -64,26 +57,22 @@ public class PlatformScript : MonoBehaviour
             index = (int)(Random.value * platformMeshes.Length);
             plat.GetComponent<MeshFilter>().mesh = platformMeshes[index];
             plat.transform.parent = gameObject.transform.parent;
-            if (index >= 2)
-            {
-                MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
-                Material[] originalMaterials = meshRenderer.materials;
-                Material[] flippedMaterials = new Material[] { originalMaterials[1], originalMaterials[0] };
-                meshRenderer.materials = flippedMaterials;
-            }
+        }
+
+        while ((nextPlatform.transform.position - transform.position).magnitude > 10)
+        {
+            index = (int)(Random.value * trees.Length);
+            GameObject tree = Instantiate(trees[index]);
+            tree.transform.position = transform.position + Vector3.up*gameObject.GetComponent<BoxCollider>().bounds.size.y / 2 + new Vector3((Random.value-0.5f)*9,0,(Random.value-0.5f)*9);
+            tree.transform.parent = transform.parent;
+            if (Random.value <= 0.8f)
+                break;
         }
 
         nextPlatform.transform.parent = gameObject.transform.parent;
         nextPlatform.gameObject.GetComponent<PlatformScript>().gameManager = gameManager;
         nextPlatform.gameObject.SetActive(true);
 
-        if (index >= 2)
-        {
-            MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
-            Material[] originalMaterials = meshRenderer.materials;
-            Material[] flippedMaterials = new Material[] { originalMaterials[1], originalMaterials[0] };
-            meshRenderer.materials = flippedMaterials;
-        }
     }
 
     // Update is called once per frame

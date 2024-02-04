@@ -72,6 +72,8 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: 1df8c033584ac4ada9ec32cb4e940ee9, type: 3}
   - {fileID: 919132149155446097, guid: 609c817f3dbcb401c9d2f1be5349d1d2, type: 3}
   - {fileID: 919132149155446097, guid: 080408847b7884089a47cca85eb148dd, type: 3}
+  trees:
+  - {fileID: 325680073542871778, guid: f72c9aa36f11145e48cc6587880f8c30, type: 3}
   lemonade: {fileID: 7161588122462564970, guid: 31e719f9b35364f0288ae9cec50a5547, type: 3}
   gameManager: {fileID: 0}
 --- !u!23 &8895608201675070378

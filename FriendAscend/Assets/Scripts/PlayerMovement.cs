@@ -65,7 +65,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag != "Player" && Time.timeAsDouble != jumpTime && collision.transform.position.y + collision.gameObject.GetComponent<BoxCollider>().bounds.size.y /2f <= transform.position.y - transform.localScale.y / 3f)
+        if (collision.gameObject.tag != "Player"
+            && Time.timeAsDouble != jumpTime
+            && (collision.gameObject.GetComponent<BoxCollider>()!=null && collision.transform.position.y + collision.gameObject.GetComponent<BoxCollider>().bounds.size.y /2f <= transform.position.y - transform.localScale.y / 3f
+            || collision.gameObject.GetComponent<MeshCollider>() && collision.transform.position.y + collision.gameObject.GetComponent<MeshCollider>().bounds.size.y / 3f <= transform.position.y - transform.localScale.y / 3f))
         {
             numJumps = 0;
             //Debug.Log("Not jumping");

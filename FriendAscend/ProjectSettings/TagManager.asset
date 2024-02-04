@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FriendAscendPlatform
   - FriendAscendWater
+  - FriendAscendLemonade
   layers:
   - Default
   - TransparentFX

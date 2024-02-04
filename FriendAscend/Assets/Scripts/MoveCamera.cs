@@ -50,15 +50,18 @@ public class MoveCamera : MonoBehaviour
 
     public void Update()
     {
-        resizeCamera();
+        moveAndResize();
     }
 
-    public void resizeCamera() {
+    public void moveAndResize() {
         Vector2 pos1 = GetComponent<Camera>().WorldToViewportPoint(players[0].transform.position);
         Vector2 pos2 = GetComponent<Camera>().WorldToViewportPoint(players[1].transform.position);
 
         if ((0.1 >= pos1[0] || 0.1 >= pos1[1]) || (0.1 >= pos2[0] || 0.1 >= pos2[1]) || (0.9 <= pos1[0] || 0.9 <= pos1[1]) || (0.9 <= pos2[0] || 0.9 <= pos2[1]))
-            GetComponent<Camera>().orthographicSize += cameraResizeSpeed * Time.deltaTime;
+            if ((pos1[1] <= 0.1 && pos2[1] <= 0.1) && ((0.1 <= pos1[0] && pos1[0] <= 0.9) && (0.1 <= pos2[0] && pos2[0] <= 0.9)))
+                FixedUpdate();
+            else
+                GetComponent<Camera>().orthographicSize += cameraResizeSpeed * Time.deltaTime;
         else if ((0.4 <= pos1[0] && pos1[0] <= 0.6) && (0.4 <= pos1[1] && pos1[1] <= 0.6) && (0.4 <= pos2[0] && pos2[0] <= 0.6) && (0.4 <= pos2[1] && pos2[1] <= 0.6) && GetComponent<Camera>().orthographicSize > 4)
             GetComponent<Camera>().orthographicSize -= cameraResizeSpeed * Time.deltaTime;
         

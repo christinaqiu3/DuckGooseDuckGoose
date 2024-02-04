@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector3.up * 375);
             numJumps++;
             jumpTime = Time.timeAsDouble;
-            Debug.Log("Jumping");
+            //Debug.Log("Jumping");
         }
         if (rb.velocity.magnitude > maxSpeed)
             rb.velocity = rb.velocity.normalized * maxSpeed;
@@ -68,11 +68,15 @@ public class PlayerMovement : MonoBehaviour
         if (Time.timeAsDouble != jumpTime && collision.transform.position.y + collision.gameObject.GetComponent<BoxCollider>().bounds.size.y /2f <= transform.position.y - transform.localScale.y / 3f)
         {
             numJumps = 0;
-            Debug.Log("Not jumping");
+            //Debug.Log("Not jumping");
         }
         if (collision.gameObject.tag == "FriendAscendWater")
         {
             GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * maxWaterSpeed;
+        }
+        if(collision.gameObject.tag == "FriendAscendLemonade")
+        {
+            maxNumJumps = 2;
         }
     }
 
